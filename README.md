@@ -42,25 +42,10 @@ dsh plugin --profile web add https://github.com/yuanbaoerer/dsh-decision-split/r
 
 `决策摘要` · `决策要点` · `待决策清单` · `决策清单` · `决策事项` · `Decision Summary` · `Decision Points`
 
-## 开发
-
-```text
-dsh-decision-split/
-  package.json      # dsh.bundle.patch + dsh.client 清单（web 客户端插件）
-  cordis.patch.yml  # bundle patch：insert 自身
-  lib/index.js      # host 半（空壳）
-  lib/client.js     # client 半（window.__ModuleLoader__ bundle）
-  docs/             # 效果图等资源（README 用 GitHub raw 绝对地址引用，npm 页也能渲染）
-```
-
-修改 `lib/client.js` 后重启 `dsh web` 生效。发布新版本（先 bump `package.json` 的 version 并打 tag）：
-
-```sh
-npm pack                       # 生成 dsh-decision-split-<version>.tgz
-gh release create v<version> dsh-decision-split-<version>.tgz   # GitHub release
-npm publish                    # npm registry（需带 bypass-2FA 的发布 token）
-```
-
 ## License
 
 MIT
+
+---
+
+> 开发与发布说明见 [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)。
