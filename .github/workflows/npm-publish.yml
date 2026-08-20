@@ -1,0 +1,46 @@
+# 发布到 npm：在 GitHub Release 创建（非草稿）时自动执行
+#
+# 使用方式（与现有手动流程完全兼容）：
+#   1. bump package.json 版本号
+#   2. git commit && git push
+#   3. gh release create vX.Y.Z        <- 触发本 workflow，npm 发布 + 附件上传自动完成
+#
+# 前置条件：仓库 Settings -> Secrets and variables -> Actions
+#   新增 secret NPM_TOKEN = npm 发布 token（见 README/docs 说明）
+
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch: # 手动重跑
+
+permissions:
+  contents: write # 允许用 gh CLI 向 release 上传 tgz 附件
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Attach tarball to release
+        run: |
+          ver=$(node -p "require('./package.json').version")
+          tgz=$(npm pack --silent)
+          gh release upload "${{ github.event.release.tag_name }}" "$tgz" --clobber
+          echo "uploaded $tgz (v$ver)"
+        env:
+          GH_TOKEN: ${{ github.token }}
