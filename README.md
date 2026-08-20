@@ -36,13 +36,15 @@ dsh plugin --profile web add https://github.com/yuanbaoerer/dsh-decision-split/r
 
 ## 使用约定
 
-让 agent 在输出方案时，用固定格式列出待决策点，例如在指令里加一句：
+在对话开始时给 agent 一条指令（或写进你的 agent 预设），让它输出方案时固定带决策段：
 
-> 输出方案时，最后用 `## 决策摘要` 段列出所有需要我拍板的决策点。
+> 输出方案时，如果包含需要我决策的事项或多种方案对比（如 A/B/C 选一），请在方案最后用 `## 决策摘要` 段列出所有需要我拍板的决策点，每个决策点用 `**决策 N：**` 开头。
 
-插件识别的标记（任意标题层级 `##`–`######`、忽略大小写、允许结尾冒号）：
+插件识别的标记标题（任意标题层级 `#`–`######`、忽略大小写、允许结尾冒号）：
 
-`决策摘要` · `决策要点` · `待决策清单` · `决策清单` · `决策事项` · `Decision Summary` · `Decision Points`
+`决策摘要` · `决策要点` · `待决策清单` · `决策清单` · `决策事项` · `方案对比` · `方案选择` · `需要决策` · `待决策` · `待确认` · `待拍板` · `请你决定` · `请拍板` · `决策项` · `决策点` · `Decision Summary` · `Decision Points` · `Decision Required` · `Decision Needed` · `Please Decide` · `Please Choose` · `Need Your Decision` · `Options` · `Choices`
+
+> 只要方案中出现以上任一标题（如 `## 方案对比` 或 `## 待确认`），决策卡就会自动出现——即使 agent 没写 `决策摘要` 段。
 
 ## License
 
