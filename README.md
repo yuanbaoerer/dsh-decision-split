@@ -12,14 +12,16 @@
 
 ## 安装
 
+从 GitHub release 安装（当前推荐）：
+
 ```sh
-dsh plugin --profile web add dsh-decision-split
+dsh plugin --profile web add https://github.com/yuanbaoerer/dsh-decision-split/releases/latest/download/dsh-decision-split-0.1.1.tgz
 ```
 
-或从 GitHub release 安装：
+发布至 npm registry 后也可直接安装：
 
 ```sh
-dsh plugin --profile web add https://github.com/yuanbaoerer/dsh-decision-split/releases/latest/download/dsh-decision-split-0.1.0.tgz
+dsh plugin --profile web add dsh-decision-split
 ```
 
 安装后重启 `dsh web` 生效。
@@ -44,11 +46,11 @@ dsh-decision-split/
   lib/client.js     # client 半（window.__ModuleLoader__ bundle）
 ```
 
-修改 `lib/client.js` 后重启 `dsh web` 生效。发布新版本：
+修改 `lib/client.js` 后重启 `dsh web` 生效。发布新版本（先 bump `package.json` 的 version 并打 tag）：
 
 ```sh
 npm pack                       # 生成 dsh-decision-split-<version>.tgz
-gh release create v0.1.0 dsh-decision-split-0.1.0.tgz   # GitHub release
+gh release create v<version> dsh-decision-split-<version>.tgz   # GitHub release
 npm publish                    # npm registry（需先 npm login）
 ```
 
