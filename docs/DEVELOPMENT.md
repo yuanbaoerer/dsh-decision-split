@@ -17,14 +17,18 @@ dsh-decision-split/
 
 ## 发布新版本
 
-1. bump `package.json` 的 `version`（语义化版本，如 `0.1.3` → `0.1.4`）；
-2. 提交并推送（`git tag` 可选，release 自带 tag）；
-3. 依次执行：
+1. bump `package.json` 的 `version`（语义化版本，如 `0.1.5` → `0.1.6`）；
+2. 提交并推送；
+3. 只需创建 GitHub release，其余全部自动：
 
 ```sh
-npm pack                       # 生成 dsh-decision-split-<version>.tgz
-gh release create v<version> dsh-decision-split-<version>.tgz   # GitHub release
-npm publish                    # npm registry（需带 bypass-2FA 的发布 token）
+gh release create v<version>
 ```
 
-4. 若只改了 README/docs（无代码变更），发布后无需升级本地已安装的插件版本。
+`.github/workflows/npm-publish.yml` 会在 release `published` 时自动执行：
+`npm publish`（使用仓库 secret `NPM_TOKEN`）并把 tgz 附件上传到该 release。
+
+- `NPM_TOKEN` 在 GitHub 仓库 Settings → Secrets and variables → Actions 中配置，
+  值为 npm 发布 token（granular access token，勾选该包 publish 权限 + bypass 2FA，
+  或 classic automation token）。
+- 若只改了 README/docs（无代码变更），发布后无需升级本地已安装的插件版本。
