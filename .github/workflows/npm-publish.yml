@@ -37,6 +37,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Attach tarball to release
+        if: github.event_name == 'release'
         run: |
           ver=$(node -p "require('./package.json').version")
           tgz=$(npm pack --silent)
