@@ -1,6 +1,6 @@
 {
   "name": "dsh-decision-split",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "决策分屏：agent 输出含「决策摘要」段的方案时，主窗口显示摘要与决策编辑框，右侧详情栏独立展示完整 markdown，决策一键发回 agent。",
   "type": "module",
   "main": "lib/index.js",
