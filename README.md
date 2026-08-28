@@ -14,7 +14,7 @@
 
 ![dsh-decision-split 效果图](https://raw.githubusercontent.com/yuanbaoerer/dsh-decision-split/master/docs/dsh-decision-split.png)
 
-*消息尾部的「在侧栏查看全文」入口，以及右侧详情栏的完整方案展示。*
+*消息尾部的「在侧栏查看全文」入口（打开时显示为「收起侧栏」），以及右侧详情栏（480px）独立滚动展示的完整内容。*
 
 ## 安装
 
