@@ -1,6 +1,6 @@
 {
   "name": "dsh-decision-split",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "决策分屏：agent 消息尾部提供「在侧栏查看全文」入口，右侧详情栏独立滚动展示该条消息的完整 markdown，边看全文边回主窗口操作。",
   "type": "module",
   "main": "lib/index.js",

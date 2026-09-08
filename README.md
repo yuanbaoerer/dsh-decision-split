@@ -28,7 +28,7 @@ dsh plugin --profile web add dsh-decision-split
 或从 GitHub release 安装（资产名中的版本号跟随最新 release）：
 
 ```sh
-dsh plugin --profile web add https://github.com/yuanbaoerer/dsh-decision-split/releases/latest/download/dsh-decision-split-0.2.3.tgz
+dsh plugin --profile web add https://github.com/yuanbaoerer/dsh-decision-split/releases/latest/download/dsh-decision-split-0.2.4.tgz
 ```
 
 安装后重启 `dsh web` 生效。
