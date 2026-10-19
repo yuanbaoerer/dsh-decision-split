@@ -15,6 +15,8 @@ dsh-decision-split/
 
 修改客户端半（`lib/client.js`）后：服务端按请求直接读磁盘文件，**刷新浏览器页面（建议硬刷新）即生效，无需重启**（`dsh web` 的 HMR 处于禁用状态）。修改 host 半（`lib/index.js`）则需重启 `dsh web`（服务启动时加载）。
 
+> DSH 0.2.x 起客户端半通过 `ctx.sidebarRightTabs` 注册页面型 rightbar Tab，body/title 分别注册在 `sidebar.right.pane.tab` / `sidebar.right.pane.tab.title`；旧的 `details` 槽与 `ctx.layout.openDetails` 已不可用。
+
 > 本地开发常用对称：可直接把仓库 `lib/` 覆盖到 `$DSH_HOME/profiles/web/node_modules/dsh-decision-split/` 后刷新验证（本仓库即用此方式迭代）。
 
 ## 发布新版本
